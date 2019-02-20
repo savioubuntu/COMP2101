@@ -14,11 +14,20 @@ echo "Enter two integers: "
 #secondnum=2
 read firstnum secondnum
 sum=$((firstnum + secondnum))
+sub=$((firstnum - secondnum))
+mul=$((firstnum * secondnum))
+mod=$((firstnum % secondnum))
+pow=$((firstnum ** secondnum))
 dividend=$((firstnum / secondnum))
 fpdividend=$(awk "BEGIN{printf \"%.2f\", $firstnum/$secondnum}")
 
 cat <<EOF
 $firstnum plus $secondnum is $sum
+$firstnum minus $secondnum is $sub
+$firstnum multiplied by $secondnum is $mul
 $firstnum divided by $secondnum is $dividend
-  - More precisely, it is $fpdividend
+$firstnum divided by $secondnum gives $dividend with a remainder of $mod
+- More precisely, it is $fpdividend
+$firstnum raised to the power of the $secondnum is $pow
+
 EOF
