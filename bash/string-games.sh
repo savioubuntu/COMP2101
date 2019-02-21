@@ -69,7 +69,7 @@ echo "========Interface Names using awk========"
 ip -br a s| awk '{print$dev}'
 echo "=========================="
 echo "========Interface Names using grep========"
- ip -br a s  | grep "^[a-z]+" | awk '{print$dev}'  
+ grep  '+ interface' | awk '{print$dev}'  
 echo "=========================="
 
 # this pipeline uses the find command to find regular files
