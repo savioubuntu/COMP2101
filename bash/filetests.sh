@@ -16,13 +16,19 @@
 #task3
 [ -d /etc/resolv.conf ] && echo "/etc/resolv.conf is a directory" || echo "/etc/resolv.conf is not directory"
 #task4
-
+[ -r /etc/resolv.conf ] && echo "/etc/resolv.conf is readable" || echo "/etc/resolv.conf is not readable"
+#task5
+[ -w /etc/resolv.conf ] && echo "/etc/resolv.conf is writable" || echo "/etc/resolv.conf is not writable"
+#task6
+[ -x /etc/resolv.conf ] && echo "/etc/resolv.conf is executable" || echo "/etc/resolv.conf is not executable"
 # Tests if /tmp is a directory
 # TASK 4: Add a test to see if the /tmp directory is readable
 # TASK 5: Add a test to see if the /tmp directory is writable
 # TASK 6: Add a test to see if the /tmp directory can be accessed
 [ -d /tmp ] && echo "/tmp is a directory" || echo "/tmp is not a directory"
-
+[ -r /tmp ] && echo "/tmp is readable" || echo "/tmp is not readable"
+[ -w /tmp ] && echo "/tmp is writable" || echo "/tmp is not writable"
+[ -w /tmp ] && echo "/tmp is accessible" || echo "/tmp is not accessible"
 # Tests if one file is newer than another
 # TASK 7: Add testing to print out which file newest, or if they are the same age
 [ /etc/hosts -nt /etc/resolv.conf ] && echo "/etc/hosts is newer than /etc/resolv.conf"
