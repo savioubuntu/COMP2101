@@ -9,6 +9,13 @@
 # TASK 5: Add a test to see if the /etc/resolv.conf file is writable
 # TASK 6: Add a test to see if the /etc/resolv.conf file is executable
 [ -e /etc/resolv.conf ] && echo "/etc/resolv.conf exists" || echo "/etc/resolv.conf does not exist"
+#task 1
+[ -f /etc/resolv.conf ] && echo "/etc/resolv.conf is a regular file" || echo "/etc/resolv.conf is not regular file"
+#task2
+[ -h /etc/resolv.conf ] && echo "/etc/resolv.conf is a symbolic link" || echo "/etc/resolv.conf is not symblic link"
+#task3
+[ -d /etc/resolv.conf ] && echo "/etc/resolv.conf is a directory" || echo "/etc/resolv.conf is not directory"
+#task4
 
 # Tests if /tmp is a directory
 # TASK 4: Add a test to see if the /tmp directory is readable

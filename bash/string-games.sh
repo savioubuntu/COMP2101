@@ -32,7 +32,7 @@ echo "=========================="
 
 
 echo "====hello as a word of its own in the text from the somesillytext variable====="
-grep -o "hello" <<< "$somesillytext"
+grep -o "hello" <<<"$somesillytext"
 #grep "hello" <<< "$somesillytext"
 echo "==============="
 
@@ -42,8 +42,9 @@ grep '^I' <<< "$somesillytext"
 echo "============================"
 
 
-echo "======the lines that end with something other than a period in the text from the somesillytext variable"
-grep  <<< "$somesillytext"
+echo "======the lines that end with something other than a period=="
+grep "[^.]$"  <<< "$somesillytext"
+echo "==========="
 
 echo "==the lines that are blank or only contain spaces or tabs in the text from the somesillytext variable=="
 grep '[[:blank:]]' <<< "$somesillytext"
@@ -66,10 +67,10 @@ echo "========Interface Names using cut with a space as delimiter========"
 ip -br a s| cut -d ' ' -f 1
 echo "=========================="
 echo "========Interface Names using awk========"
-ip -br a s| awk '{print$dev}'
+ip -br a s| awk '{print$1}'
 echo "=========================="
 echo "========Interface Names using grep========"
- grep  '+ interface' | awk '{print$dev}'
+ip -br a s| grep -Eo '^[^ ]+'
 echo "=========================="
 
 # this pipeline uses the find command to find regular files
@@ -79,7 +80,7 @@ echo "=========================="
 # TASK 9: Modify the grep to find both JPEG and PNG files
 echo "=========PNG files========"
 find ~ -type f -exec file {} \; 2> /dev/null |
-    grep  ": PNG" |
+    grep  ": PNG\|: JPEG" |
     awk '{print $1, $2}' |
     head
 echo "=========================="
@@ -91,3 +92,4 @@ echo "Setuid files:"
 echo "=========================="
 find /bin /usr/bin -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 5 | head
 echo "=========================="
+find /bin /usr/bin -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 5 | head
