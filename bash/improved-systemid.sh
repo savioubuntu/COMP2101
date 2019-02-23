@@ -14,7 +14,7 @@
 #    - change eno1 to whatever interface you have and want to gather info about
 
 # TASK 1: Create a list of interface names and use a for loop to generate the report for every interface
-for interface in $(ip -4 a | cut -d ' ' -f1| tr ':' '\n' | awk NF)
+for interface in $(ip -br a s| cut -d ' ' -f 1| tr ':' '\n' | awk NF)
 do
 ################
 # Data Gathering
